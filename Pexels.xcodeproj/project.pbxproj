@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D4B18B197AAD40C4FB7EF94 /* Pods_Pexels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCED41E4EB98582A4E8731E /* Pods_Pexels.framework */; };
 		3785CB51276AD9D800F810EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB50276AD9D800F810EE /* AppDelegate.swift */; };
 		3785CB53276AD9D800F810EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB52276AD9D800F810EE /* SceneDelegate.swift */; };
 		3785CB55276AD9D800F810EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB54276AD9D800F810EE /* ViewController.swift */; };
@@ -16,6 +17,10 @@
 		3785CB68276AD9DA00F810EE /* PexelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB67276AD9DA00F810EE /* PexelsTests.swift */; };
 		3785CB72276AD9DB00F810EE /* PexelsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB71276AD9DB00F810EE /* PexelsUITests.swift */; };
 		3785CB74276AD9DB00F810EE /* PexelsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB73276AD9DB00F810EE /* PexelsUITestsLaunchTests.swift */; };
+		3785CB86276AED5200F810EE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB85276AED5200F810EE /* SearchViewController.swift */; };
+		3785CB8A276B7E3B00F810EE /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB89276B7E3B00F810EE /* ApiModel.swift */; };
+		832978BE17EE4E673455CBA2 /* Pods_Pexels_PexelsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D042DCB2169D79F9526B07 /* Pods_Pexels_PexelsUITests.framework */; };
+		B5C69DF294DE0FA0AD9E6F17 /* Pods_PexelsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E4DAA0658262AFEA921F93 /* Pods_PexelsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02E25E7251B0410EFF6FBCAC /* Pods-Pexels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pexels.release.xcconfig"; path = "Target Support Files/Pods-Pexels/Pods-Pexels.release.xcconfig"; sourceTree = "<group>"; };
+		0334D02AC1B4F2ED64956650 /* Pods-Pexels-PexelsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pexels-PexelsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pexels-PexelsUITests/Pods-Pexels-PexelsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		32D042DCB2169D79F9526B07 /* Pods_Pexels_PexelsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pexels_PexelsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3785CB4D276AD9D800F810EE /* Pexels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pexels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3785CB50276AD9D800F810EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3785CB52276AD9D800F810EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,14 @@
 		3785CB6D276AD9DB00F810EE /* PexelsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PexelsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3785CB71276AD9DB00F810EE /* PexelsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsUITests.swift; sourceTree = "<group>"; };
 		3785CB73276AD9DB00F810EE /* PexelsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3785CB85276AED5200F810EE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3785CB89276B7E3B00F810EE /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
+		4DCED41E4EB98582A4E8731E /* Pods_Pexels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pexels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62E4DAA0658262AFEA921F93 /* Pods_PexelsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PexelsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		828CAF9C27AFF07F49CB8E1E /* Pods-Pexels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pexels.debug.xcconfig"; path = "Target Support Files/Pods-Pexels/Pods-Pexels.debug.xcconfig"; sourceTree = "<group>"; };
+		AB6FE3ADDB08672E5EBDC696 /* Pods-PexelsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PexelsTests.release.xcconfig"; path = "Target Support Files/Pods-PexelsTests/Pods-PexelsTests.release.xcconfig"; sourceTree = "<group>"; };
+		DA31F3E1BF0F3084AFD41F60 /* Pods-PexelsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PexelsTests.debug.xcconfig"; path = "Target Support Files/Pods-PexelsTests/Pods-PexelsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FCEEA68AC78FD040733B2AEA /* Pods-Pexels-PexelsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pexels-PexelsUITests.release.xcconfig"; path = "Target Support Files/Pods-Pexels-PexelsUITests/Pods-Pexels-PexelsUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D4B18B197AAD40C4FB7EF94 /* Pods_Pexels.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C69DF294DE0FA0AD9E6F17 /* Pods_PexelsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +88,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				832978BE17EE4E673455CBA2 /* Pods_Pexels_PexelsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2913F66F566532D9072A3955 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				828CAF9C27AFF07F49CB8E1E /* Pods-Pexels.debug.xcconfig */,
+				02E25E7251B0410EFF6FBCAC /* Pods-Pexels.release.xcconfig */,
+				0334D02AC1B4F2ED64956650 /* Pods-Pexels-PexelsUITests.debug.xcconfig */,
+				FCEEA68AC78FD040733B2AEA /* Pods-Pexels-PexelsUITests.release.xcconfig */,
+				DA31F3E1BF0F3084AFD41F60 /* Pods-PexelsTests.debug.xcconfig */,
+				AB6FE3ADDB08672E5EBDC696 /* Pods-PexelsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3785CB44276AD9D800F810EE = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +115,8 @@
 				3785CB66276AD9DA00F810EE /* PexelsTests */,
 				3785CB70276AD9DB00F810EE /* PexelsUITests */,
 				3785CB4E276AD9D800F810EE /* Products */,
+				2913F66F566532D9072A3955 /* Pods */,
+				465A284B0D20CA5D0D992874 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +133,11 @@
 		3785CB4F276AD9D800F810EE /* Pexels */ = {
 			isa = PBXGroup;
 			children = (
+				3785CB80276ADD2700F810EE /* Model */,
+				3785CB81276ADD3300F810EE /* View */,
+				3785CB82276ADD5000F810EE /* Controller */,
 				3785CB50276AD9D800F810EE /* AppDelegate.swift */,
 				3785CB52276AD9D800F810EE /* SceneDelegate.swift */,
-				3785CB54276AD9D800F810EE /* ViewController.swift */,
-				3785CB56276AD9D800F810EE /* Main.storyboard */,
 				3785CB59276AD9DA00F810EE /* Assets.xcassets */,
 				3785CB5B276AD9DA00F810EE /* LaunchScreen.storyboard */,
 				3785CB5E276AD9DA00F810EE /* Info.plist */,
@@ -127,6 +162,41 @@
 			path = PexelsUITests;
 			sourceTree = "<group>";
 		};
+		3785CB80276ADD2700F810EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3785CB89276B7E3B00F810EE /* ApiModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3785CB81276ADD3300F810EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3785CB56276AD9D800F810EE /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3785CB82276ADD5000F810EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3785CB85276AED5200F810EE /* SearchViewController.swift */,
+				3785CB54276AD9D800F810EE /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		465A284B0D20CA5D0D992874 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DCED41E4EB98582A4E8731E /* Pods_Pexels.framework */,
+				32D042DCB2169D79F9526B07 /* Pods_Pexels_PexelsUITests.framework */,
+				62E4DAA0658262AFEA921F93 /* Pods_PexelsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3785CB77276AD9DB00F810EE /* Build configuration list for PBXNativeTarget "Pexels" */;
 			buildPhases = (
+				10845694B69C9448A3ACF859 /* [CP] Check Pods Manifest.lock */,
 				3785CB49276AD9D800F810EE /* Sources */,
 				3785CB4A276AD9D800F810EE /* Frameworks */,
 				3785CB4B276AD9D800F810EE /* Resources */,
+				3B45B591E71C7FD39E750C3A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +223,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3785CB7A276AD9DB00F810EE /* Build configuration list for PBXNativeTarget "PexelsTests" */;
 			buildPhases = (
+				25BD3A726E805ABEB0FC7F08 /* [CP] Check Pods Manifest.lock */,
 				3785CB5F276AD9DA00F810EE /* Sources */,
 				3785CB60276AD9DA00F810EE /* Frameworks */,
 				3785CB61276AD9DA00F810EE /* Resources */,
@@ -169,9 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3785CB7D276AD9DB00F810EE /* Build configuration list for PBXNativeTarget "PexelsUITests" */;
 			buildPhases = (
+				5730B146839B6CFA6ADA1945 /* [CP] Check Pods Manifest.lock */,
 				3785CB69276AD9DB00F810EE /* Sources */,
 				3785CB6A276AD9DB00F810EE /* Frameworks */,
 				3785CB6B276AD9DB00F810EE /* Resources */,
+				0FC4B49F34AB9CFBA6AC3F48 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,14 +328,119 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FC4B49F34AB9CFBA6AC3F48 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pexels-PexelsUITests/Pods-Pexels-PexelsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pexels-PexelsUITests/Pods-Pexels-PexelsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pexels-PexelsUITests/Pods-Pexels-PexelsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		10845694B69C9448A3ACF859 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pexels-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25BD3A726E805ABEB0FC7F08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PexelsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B45B591E71C7FD39E750C3A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pexels/Pods-Pexels-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pexels/Pods-Pexels-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pexels/Pods-Pexels-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5730B146839B6CFA6ADA1945 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pexels-PexelsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3785CB49276AD9D800F810EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3785CB86276AED5200F810EE /* SearchViewController.swift in Sources */,
 				3785CB55276AD9D800F810EE /* ViewController.swift in Sources */,
 				3785CB51276AD9D800F810EE /* AppDelegate.swift in Sources */,
 				3785CB53276AD9D800F810EE /* SceneDelegate.swift in Sources */,
+				3785CB8A276B7E3B00F810EE /* ApiModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +614,7 @@
 		};
 		3785CB78276AD9DB00F810EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 828CAF9C27AFF07F49CB8E1E /* Pods-Pexels.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -462,6 +643,7 @@
 		};
 		3785CB79276AD9DB00F810EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02E25E7251B0410EFF6FBCAC /* Pods-Pexels.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -490,6 +672,7 @@
 		};
 		3785CB7B276AD9DB00F810EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA31F3E1BF0F3084AFD41F60 /* Pods-PexelsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +698,7 @@
 		};
 		3785CB7C276AD9DB00F810EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB6FE3ADDB08672E5EBDC696 /* Pods-PexelsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -540,6 +724,7 @@
 		};
 		3785CB7E276AD9DB00F810EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0334D02AC1B4F2ED64956650 /* Pods-Pexels-PexelsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,6 +748,7 @@
 		};
 		3785CB7F276AD9DB00F810EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCEEA68AC78FD040733B2AEA /* Pods-Pexels-PexelsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
