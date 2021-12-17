@@ -18,14 +18,13 @@ class PexelsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    
-    //検索結果の個数の確認
-    func ResultCount() throws {
+    //検索結果の数
+    func testResultApi() throws {
         
         let ApiList = ApiListModel()
         let expect = expectation(description: "SendMyRequest")
         
-        ApiList.searchEvents(keyword: "", success: {(api) in
+        ApiList.searchEvents(keyword: "犬", success: {(api) in
             
             let result = api.photos.count
             print(result)
