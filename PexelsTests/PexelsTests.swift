@@ -29,5 +29,35 @@ class PexelsTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
+    //検索結果の個数確認テスト
+    func testMySample() {
+        
+        let ApiList = ApiListModel()
+        let expect = expectation(description: "SendMyRequest")
+        
+        ApiList.searchEvents(keyword: "犬", success: {(api) in
+            
+            let result = api.photos.count
+            print(result)
+            
+            //0個
+            XCTAssertNotEqual(result, 0)
+            expect.fulfill()
+            
+        }, Error:{ (mes) in
+            
+        })
+        
+        waitForExpectations(timeout: 5) { (error) in
+            if let error = error {
+                //エラー発生（タイムアウトなど）
+                print(error)
+                XCTFail("ExpectaionTimeOut")
+            } else {
+                
+            }
+        }
+    }
+    
 }

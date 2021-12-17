@@ -78,11 +78,11 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
                     self.present(alert, animated: true, completion: nil)
                 }
                 
-            }, error:{ (mes) in
+            }, Error:{ (error) in
                 //成功時の処理
                 HUD.hide()
                 
-                let alert = UIAlertController(title: "確認", message: "エラー", preferredStyle: .alert)
+                let alert = UIAlertController(title: "確認", message: "\(error)", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)

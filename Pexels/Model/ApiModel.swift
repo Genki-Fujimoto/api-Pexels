@@ -33,7 +33,7 @@ struct ListItem : Codable {
 
 class ApiListModel{
 
-    func searchEvents(keyword: String,success: @escaping (Api) -> Void, error: @escaping (_ message: String?) -> Void){
+    func searchEvents(keyword: String,success: @escaping (Api) -> Void, Error: @escaping (AFError) -> Void){
         
         HUD.show(.progress)
         
@@ -60,8 +60,8 @@ class ApiListModel{
                         success(result)
                     }
                 }
-            case .failure:
-                error("errr")
+            case .failure(let error):
+                Error(error)
             }
         }
     }
