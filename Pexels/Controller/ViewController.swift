@@ -16,12 +16,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //画像表示
         Imageview.sd_setImage(with:  URL(string:PhotoLargeUrl), placeholderImage: nil, options: .continueInBackground, completed: nil)
-        
     }
-
-
 }
 

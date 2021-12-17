@@ -9,29 +9,9 @@ import XCTest
 @testable import Pexels
 
 class PexelsTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
     
     //検索結果の個数確認テスト
-    func testMySample() {
+    func ResultCount(){
         
         let ApiList = ApiListModel()
         let expect = expectation(description: "SendMyRequest")
@@ -41,11 +21,11 @@ class PexelsTests: XCTestCase {
             let result = api.photos.count
             print(result)
             
-            //0個
+            //0個チェック
             XCTAssertNotEqual(result, 0)
             expect.fulfill()
             
-        }, Error:{ (mes) in
+        }, Error:{ (error) in
             
         })
         
@@ -59,5 +39,6 @@ class PexelsTests: XCTestCase {
             }
         }
     }
+    
     
 }

@@ -65,7 +65,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="画像検索" translatesAutoresizingMaskIntoConstraints="NO" id="qbw-7V-we2">
+                            <searchBar contentMode="redraw" restorationIdentifier="Searchbar" placeholder="画像検索" translatesAutoresizingMaskIntoConstraints="NO" id="qbw-7V-we2">
                                 <rect key="frame" x="0.0" y="49" width="375" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
