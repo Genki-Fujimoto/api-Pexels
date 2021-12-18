@@ -10,15 +10,20 @@ import Alamofire
 import SwiftyJSON
 import PKHUD
 import SDWebImage
+import RxSwift
+import RxCocoa
 
-class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+
+class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
     
     //定義
     @IBOutlet weak var searchber: UISearchBar!
     @IBOutlet weak var tableview: UITableView!
     
-    let apiList = ApiListModel()
+    let apiModel = ApiListModel()
     var apiGetlist:[ListItem] = []
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,71 +31,25 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         // デリゲート設定
         tableview.delegate = self
         tableview.dataSource = self
-        searchber.delegate = self
-    }
-    
-    
-    // 検索バー編集開始時にキャンセルボタン有効化
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar){
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
-    
-    // キャンセルボタンでキャセルボタン非表示
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(false, animated: true)
-    }
-    
-    //検索ボタン押下時の呼び出しメソッド
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        //キーボードを閉じる。
-        searchBar.endEditing(true)
-        
-        if(searchBar.text!.count == 0) {
-            let alert = UIAlertController(title: "注意", message: "1文字以上で検索してください", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
-        } else {
-          
-            //Api取得
-            apiList.searchEvents(keyword: searchBar.text!, success: {(api) in
-                
-                //成功時の処理
-                HUD.hide()
-                
-                print(api.photos)
-                
-                if !api.photos.isEmpty{
-                    
-                    //ApiGetlistに入れる
-                    self.apiGetlist = api.photos
-                    
-                    //テーブルを再読み込みする。
-                    self.tableview.reloadData()
+        //RxSwift
+        self.searchber.rx.text.orEmpty
+            .filter { $0.count > 0 }
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMap { [unowned self] data in
+                // 結果(data)を引数に次の関数に繋げる
+                return self.apiModel.searchEvents(keyword: data)
+            }
+            .subscribe(onNext: {[weak self] getapi in
+                if let events = getapi {
+                    self!.apiGetlist = events.photos
+                    self!.tableview.reloadData()
                 }
-                else {
-                    
-                    let alert = UIAlertController(title: "確認", message: "ヒットしませんでした", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "OK", style: .default)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }
-                
-            }, Error:{ (error) in
-                //成功時の処理
-                HUD.hide()
-                
-                let alert = UIAlertController(title: "確認", message: "\(error)", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .default)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-                
             })
-        }
+            .disposed(by: disposeBag)
     }
-
+    
     //Cellの個数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apiGetlist.count
@@ -99,15 +58,15 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //cell を xib TableViewCell
+        //cell定義
         let cell =  tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        //Cellのタグを使用し定義
+        //cellのタグを使用し定義
         let contentsImageView = cell.contentView.viewWithTag(1) as! UIImageView
         let Photographer = cell.contentView.viewWithTag(2) as! UILabel
         let ArtName = cell.contentView.viewWithTag(3) as! UILabel
         
-        //値を代入
+        //値代入
         contentsImageView.sd_setImage(with:  URL(string:(apiGetlist[indexPath.row].src?.tiny)!), placeholderImage: nil, options: .continueInBackground, completed: nil)
         Photographer.text = "撮影者: " + apiGetlist[indexPath.row].photographer!
         ArtName.text = "【作品名】\n" + apiGetlist[indexPath.row].alt!
@@ -115,12 +74,12 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         return cell
     }
     
-    //Cellの高さ
+    //cellの高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
     
-    //Cellをタップした時の動作
+    //cellをタップ時の動作
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //選択解除

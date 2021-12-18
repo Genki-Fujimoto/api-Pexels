@@ -8,8 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import PKHUD
-
+import RxSwift
 
 struct Api : Codable {
     var photos:[ListItem]
@@ -32,37 +31,44 @@ struct ListItem : Codable {
 
 
 class ApiListModel{
-
-    func searchEvents(keyword: String,success: @escaping (Api) -> Void, Error: @escaping (AFError) -> Void){
+    
+    func searchEvents(keyword: String)-> Observable<Api?>{
         
-        HUD.show(.progress)
-        
-        //Apiキー
-        let headers: HTTPHeaders = [
-            "Authorization": "563492ad6f91700001000001bf70f8ac0fec4a169e874cb63b6d10d0",
-        ]
-        
-        //リクエスト先URL
-        let urlString = "https://api.pexels.com/v1/search?query=\(keyword)&locale=ja-JP&per_page=10"
-        
-        //コンピュターで読み込めるようエンコーディング
-        let encodeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        AF.request(encodeUrlString,method: .get,headers: headers).responseJSON{
-            (response) in
+        //クロージャからストリームを生成
+        return Observable.create { observer in
             
-            switch response.result {
-            case .success:
-                if let data = response.data {
-                    let decoder = JSONDecoder()
-                    if let result = try? decoder.decode(Api.self, from: data) {
-                        print(result)
-                        success(result)
+            //apiキー
+            let headers: HTTPHeaders = [
+                "Authorization": "563492ad6f91700001000001bf70f8ac0fec4a169e874cb63b6d10d0",
+            ]
+            
+            //リクエスト先URL
+            let urlString = "https://api.pexels.com/v1/search?query=\(keyword)&locale=ja-JP&per_page=10"
+            
+            //エンコーディング
+            let encodeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            
+            AF.request(encodeUrlString,method: .get,headers: headers).responseJSON{
+                (response) in
+                
+                switch response.result {
+                case .success:
+                    if let data = response.data {
+                        let decoder = JSONDecoder()
+                        if let result = try? decoder.decode(Api.self, from: data) {
+                            print(result)
+                            
+                            //onNext「値が更新された」イベント
+                            observer.onNext(result)
+                        }
                     }
+                case .failure(let error):
+                    
+                    //onError「エラーが発生した」イベント
+                    observer.onError(error)
                 }
-            case .failure(let error):
-                Error(error)
             }
+            return Disposables.create()
         }
     }
 }

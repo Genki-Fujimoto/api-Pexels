@@ -7,6 +7,7 @@
 
 import XCTest
 
+
 class PexelsUITests: XCTestCase {
 
     //UI動作コード
@@ -15,20 +16,23 @@ class PexelsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        app.searchFields["画像検索"].tap()
-        app.searchFields["画像検索"].typeText("猫")
-        XCUIApplication().searchFields["画像検索"].tap()
-        app.buttons["Search"].tap()
-        
+        let searchField = app.searchFields["画像検索"]
         let tablesQuery = app.tables
+        let staticText = tablesQuery.children(matching: .cell)
+        let mvcButton = app.navigationBars["Pexels.View"].buttons["MVC-Rxswift"]
+        
+        searchField.tap()
+        searchField.typeText("猫")
+        
         tablesQuery.children(matching: .cell).element(boundBy: 1).swipeUp()
+        staticText.element(boundBy: 5).tap()
         
-        let staticText = tablesQuery.children(matching: .cell).element(boundBy: 5)
-        staticText.tap()
-        
-        let mvcButton = app.navigationBars["Pexels.View"].buttons["MVC"]
         mvcButton.tap()
+        searchField.buttons["Clear text"].tap()
         
+        searchField.tap()
+        searchField.typeText("犬")
+        staticText.element(boundBy: 4).tap()
         
     }
 }

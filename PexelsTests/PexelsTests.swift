@@ -6,9 +6,14 @@
 //
 
 import XCTest
+import RxSwift
+
 @testable import Pexels
 
 class PexelsTests: XCTestCase {
+    
+    let disposeBag = DisposeBag()
+    
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,21 +26,20 @@ class PexelsTests: XCTestCase {
     //検索結果の数
     func testResultApi() throws {
         
-        let apiList = ApiListModel()
+        let apiModel = ApiListModel()
         let expect = expectation(description: "SendMyRequest")
         
-        apiList.searchEvents(keyword: "犬", success: {(api) in
-            
-            let result = api.photos.count
-            print(result)
-            
-            //0個チェック
-            XCTAssertNotEqual(result, 0)
-            expect.fulfill()
-            
-        }, Error:{ (error) in
-            
+        let test = apiModel.searchEvents(keyword: "犬")
+        test.subscribe(onNext: {[weak self] getapi in
+            if let events = getapi {
+                let result = events.photos.count
+                            //0個チェック
+                            XCTAssertNotEqual(result, 0)
+                            expect.fulfill()
+                
+            }
         })
+            .disposed(by: disposeBag)
         
         waitForExpectations(timeout: 5) { (error) in
             if let error = error {
