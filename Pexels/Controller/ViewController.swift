@@ -10,14 +10,14 @@ import SDWebImage
 
 class ViewController: UIViewController {
     
-    var PhotoLargeUrl = String()
+    var photoLargeUrl = String()
     
-    @IBOutlet weak var Imageview: UIImageView!
+    @IBOutlet weak var imageview: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //画像表示
-        Imageview.sd_setImage(with:  URL(string:PhotoLargeUrl), placeholderImage: nil, options: .continueInBackground, completed: nil)
+        imageview.sd_setImage(with:  URL(string:photoLargeUrl), placeholderImage: nil, options: .continueInBackground, completed: nil)
     }
 }
 

@@ -14,11 +14,11 @@ import SDWebImage
 class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
     //定義
-    @IBOutlet weak var Searchber: UISearchBar!
+    @IBOutlet weak var searchber: UISearchBar!
     @IBOutlet weak var tableview: UITableView!
     
-    let ApiList = ApiListModel()
-    var ApiGetlist:[ListItem] = []
+    let apiList = ApiListModel()
+    var apiGetlist:[ListItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         // デリゲート設定
         tableview.delegate = self
         tableview.dataSource = self
-        Searchber.delegate = self
+        searchber.delegate = self
     }
     
     
@@ -55,7 +55,7 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         } else {
           
             //Api取得
-            ApiList.searchEvents(keyword: searchBar.text!, success: {(api) in
+            apiList.searchEvents(keyword: searchBar.text!, success: {(api) in
                 
                 //成功時の処理
                 HUD.hide()
@@ -65,7 +65,7 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
                 if !api.photos.isEmpty{
                     
                     //ApiGetlistに入れる
-                    self.ApiGetlist = api.photos
+                    self.apiGetlist = api.photos
                     
                     //テーブルを再読み込みする。
                     self.tableview.reloadData()
@@ -93,7 +93,7 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
 
     //Cellの個数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ApiGetlist.count
+        return apiGetlist.count
     }
     
     
@@ -108,9 +108,9 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         let ArtName = cell.contentView.viewWithTag(3) as! UILabel
         
         //値を代入
-        contentsImageView.sd_setImage(with:  URL(string:(ApiGetlist[indexPath.row].src?.tiny)!), placeholderImage: nil, options: .continueInBackground, completed: nil)
-        Photographer.text = "撮影者: " + ApiGetlist[indexPath.row].photographer!
-        ArtName.text = "【作品名】\n" + ApiGetlist[indexPath.row].alt!
+        contentsImageView.sd_setImage(with:  URL(string:(apiGetlist[indexPath.row].src?.tiny)!), placeholderImage: nil, options: .continueInBackground, completed: nil)
+        Photographer.text = "撮影者: " + apiGetlist[indexPath.row].photographer!
+        ArtName.text = "【作品名】\n" + apiGetlist[indexPath.row].alt!
         
         return cell
     }
@@ -128,7 +128,7 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         
         //画面遷移
         let ViewController = self.storyboard?.instantiateViewController(identifier: "VC") as! ViewController
-        ViewController.PhotoLargeUrl = (ApiGetlist[indexPath.row].src?.large)!
+        ViewController.photoLargeUrl = (apiGetlist[indexPath.row].src?.large)!
         self.navigationController?.pushViewController(ViewController, animated: true)
     }
 

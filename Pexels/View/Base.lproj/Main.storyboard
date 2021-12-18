@@ -86,7 +86,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="MVC" id="kqJ-hE-Rcc"/>
                     <connections>
-                        <outlet property="Searchber" destination="qbw-7V-we2" id="UlK-h0-Xty"/>
+                        <outlet property="searchber" destination="qbw-7V-we2" id="0Jw-uJ-F7F"/>
                         <outlet property="tableview" destination="8tp-WP-E7P" id="iJj-Ig-cKx"/>
                         <segue destination="Gam-cs-EzP" kind="show" id="VWj-D3-kyU"/>
                     </connections>
@@ -113,7 +113,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4JO-Os-VP3"/>
                     <connections>
-                        <outlet property="Imageview" destination="5Da-L6-SFy" id="BLm-c8-Hd6"/>
+                        <outlet property="imageview" destination="5Da-L6-SFy" id="jHw-eC-0BK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ch-Vc-TmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

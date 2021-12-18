@@ -21,10 +21,10 @@ class PexelsTests: XCTestCase {
     //検索結果の数
     func testResultApi() throws {
         
-        let ApiList = ApiListModel()
+        let apiList = ApiListModel()
         let expect = expectation(description: "SendMyRequest")
         
-        ApiList.searchEvents(keyword: "犬", success: {(api) in
+        apiList.searchEvents(keyword: "犬", success: {(api) in
             
             let result = api.photos.count
             print(result)
