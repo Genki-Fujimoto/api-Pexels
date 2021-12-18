@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MVC-->
+        <!--MVC-Rxswift-->
         <scene sceneID="fKs-rT-vNc">
             <objects>
                 <viewController id="LPr-dN-VvU" customClass="SearchViewController" customModule="Pexels" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,7 +84,7 @@
                             <constraint firstItem="8tp-WP-E7P" firstAttribute="trailing" secondItem="zIQ-Ym-IxO" secondAttribute="trailing" id="vix-6x-dVd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="MVC" id="kqJ-hE-Rcc"/>
+                    <navigationItem key="navigationItem" title="MVC-Rxswift" id="kqJ-hE-Rcc"/>
                     <connections>
                         <outlet property="searchber" destination="qbw-7V-we2" id="0Jw-uJ-F7F"/>
                         <outlet property="tableview" destination="8tp-WP-E7P" id="iJj-Ig-cKx"/>

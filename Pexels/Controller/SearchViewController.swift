@@ -10,6 +10,9 @@ import Alamofire
 import SwiftyJSON
 import PKHUD
 import SDWebImage
+import RxSwift
+import RxCocoa
+
 
 class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
@@ -17,8 +20,11 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
     @IBOutlet weak var searchber: UISearchBar!
     @IBOutlet weak var tableview: UITableView!
     
-    let apiList = ApiListModel()
+    let disposeBag = DisposeBag()
+    
+    let apiModel = ApiListModel()
     var apiGetlist:[ListItem] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,7 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         tableview.delegate = self
         tableview.dataSource = self
         searchber.delegate = self
+
     }
     
     
@@ -52,42 +59,72 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
             let ok = UIAlertAction(title: "OK", style: .default)
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
+            
         } else {
-          
-            //api取得
-            apiList.searchEvents(keyword: searchBar.text!, success: {(api) in
-                
-                //成功時の処理
-                HUD.hide()
-                print(api.photos)
-                
-                if !api.photos.isEmpty{
+            
+            let getapi = apiModel.searchEvents(keyword: searchBar.text!)
+            getapi.subscribe(onNext: {[weak self] getapi in
+                if let events = getapi {
                     
-                    //apiGetlistに入れる
-                    self.apiGetlist = api.photos
-                    
-                    //テーブルを再読み込みする。
-                    self.tableview.reloadData()
+                    if events.photos.isEmpty{
+                        let alert = UIAlertController(title: "確認", message: "ヒットしませんでした", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "OK", style: .default)
+                        alert.addAction(ok)
+                        self!.present(alert, animated: true, completion: nil)
+                    }else{
+                        self!.apiGetlist = events.photos
+                        self!.tableview.reloadData()
+                    }
                 }
-                else {
-                    
-                    let alert = UIAlertController(title: "確認", message: "ヒットしませんでした", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "OK", style: .default)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }
-                
-            }, Error:{ (error) in
-                //成功時の処理
-                HUD.hide()
-                
-                let alert = UIAlertController(title: "確認", message: "\(error)", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .default)
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-                
             })
+                .disposed(by: disposeBag)
         }
+        
+        
+
+        
+        
+//        if(searchBar.text!.count == 0) {
+//            let alert = UIAlertController(title: "注意", message: "1文字以上で検索してください", preferredStyle: .alert)
+//            let ok = UIAlertAction(title: "OK", style: .default)
+//            alert.addAction(ok)
+//            self.present(alert, animated: true, completion: nil)
+//        } else {
+//
+//            //api取得
+//            apiModel.searchEvents(keyword: searchBar.text!, success: {(api) in
+//
+//                //成功時の処理
+//                HUD.hide()
+//                print(api.photos)
+//
+//                if !api.photos.isEmpty{
+//
+//                    //apiGetlistに入れる
+//                    self.apiGetlist = api.photos
+//
+//                    //テーブルを再読み込みする。
+//                    self.tableview.reloadData()
+//                }
+//                else {
+//
+//                    let alert = UIAlertController(title: "確認", message: "ヒットしませんでした", preferredStyle: .alert)
+//                    let ok = UIAlertAction(title: "OK", style: .default)
+//                    alert.addAction(ok)
+//                    self.present(alert, animated: true, completion: nil)
+//                }
+//
+//            }, Error:{ (error) in
+//                //成功時の処理
+//                HUD.hide()
+//
+//                let alert = UIAlertController(title: "確認", message: "\(error)", preferredStyle: .alert)
+//                let ok = UIAlertAction(title: "OK", style: .default)
+//                alert.addAction(ok)
+//                self.present(alert, animated: true, completion: nil)
+//
+//            })
+//        }
     }
 
     //Cellの個数
