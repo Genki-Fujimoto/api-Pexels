@@ -33,6 +33,7 @@ struct ListItem : Codable {
 
 class ApiListModel{
     
+    //クロージャからストリームを生成
     func searchEvents(keyword: String)-> Observable<Api?>{
         
         return Observable.create { observer in
@@ -61,10 +62,14 @@ class ApiListModel{
                         let decoder = JSONDecoder()
                         if let result = try? decoder.decode(Api.self, from: data) {
                             print(result)
+                            
+                            //onNextは「値が更新された」
                             observer.onNext(result)
                         }
                     }
                 case .failure(let error):
+                    
+                    //onErrorは「エラーが発生した」
                     observer.onError(error)
                 }
             }
