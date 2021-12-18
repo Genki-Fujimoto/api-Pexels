@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import PKHUD
 import RxSwift
 
 struct Api : Codable {
@@ -33,12 +32,10 @@ struct ListItem : Codable {
 
 class ApiListModel{
     
-    //クロージャからストリームを生成
     func searchEvents(keyword: String)-> Observable<Api?>{
         
+        //クロージャからストリームを生成
         return Observable.create { observer in
-            
-            HUD.show(.progress)
             
             //apiキー
             let headers: HTTPHeaders = [
@@ -54,8 +51,6 @@ class ApiListModel{
             AF.request(encodeUrlString,method: .get,headers: headers).responseJSON{
                 (response) in
                 
-                HUD.hide()
-                
                 switch response.result {
                 case .success:
                     if let data = response.data {
@@ -63,18 +58,17 @@ class ApiListModel{
                         if let result = try? decoder.decode(Api.self, from: data) {
                             print(result)
                             
-                            //onNextは「値が更新された」
+                            //onNext「値が更新された」イベント
                             observer.onNext(result)
                         }
                     }
                 case .failure(let error):
                     
-                    //onErrorは「エラーが発生した」
+                    //onError「エラーが発生した」イベント
                     observer.onError(error)
                 }
             }
             return Disposables.create()
         }
     }
-    
 }

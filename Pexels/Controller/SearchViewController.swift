@@ -14,17 +14,16 @@ import RxSwift
 import RxCocoa
 
 
-class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
     
     //定義
     @IBOutlet weak var searchber: UISearchBar!
     @IBOutlet weak var tableview: UITableView!
     
-    let disposeBag = DisposeBag()
-    
     let apiModel = ApiListModel()
     var apiGetlist:[ListItem] = []
     
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,56 +31,25 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         // デリゲート設定
         tableview.delegate = self
         tableview.dataSource = self
-        searchber.delegate = self
-
-    }
-    
-    
-    // 検索バーキャンセルボタン有効化
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar){
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
-    
-    //キャセルボタン非表示
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(false, animated: true)
-    }
-    
-    //検索ボタン時
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        //キーボード閉じる。
-        searchBar.endEditing(true)
-        
-        if(searchBar.text!.count == 0) {
-            let alert = UIAlertController(title: "注意", message: "1文字以上で検索してください", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
-            
-        } else {
-            
-            //Rxswift
-            let getapi = apiModel.searchEvents(keyword: searchBar.text!)
-            getapi.subscribe(onNext: {[weak self] getapi in
+        //RxSwift
+        self.searchber.rx.text.orEmpty
+            .filter { $0.count > 0 }
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMap { [unowned self] data in
+                // 結果(data)を引数に次の関数に繋げる
+                return self.apiModel.searchEvents(keyword: data)
+            }
+            .subscribe(onNext: {[weak self] getapi in
                 if let events = getapi {
-                    
-                    if events.photos.isEmpty{
-                        let alert = UIAlertController(title: "確認", message: "ヒットしませんでした", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "OK", style: .default)
-                        alert.addAction(ok)
-                        self!.present(alert, animated: true, completion: nil)
-                    }else{
-                        self!.apiGetlist = events.photos
-                        self!.tableview.reloadData()
-                    }
+                    self!.apiGetlist = events.photos
+                    self!.tableview.reloadData()
                 }
             })
-                .disposed(by: disposeBag)
-        }
+            .disposed(by: disposeBag)
     }
-
+    
     //Cellの個数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apiGetlist.count
