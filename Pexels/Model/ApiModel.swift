@@ -37,7 +37,7 @@ class ApiListModel{
         
         HUD.show(.progress)
         
-        //Apiキー
+        //apiキー
         let headers: HTTPHeaders = [
             "Authorization": "563492ad6f91700001000001bf70f8ac0fec4a169e874cb63b6d10d0",
         ]
@@ -45,7 +45,7 @@ class ApiListModel{
         //リクエスト先URL
         let urlString = "https://api.pexels.com/v1/search?query=\(keyword)&locale=ja-JP&per_page=10"
         
-        //コンピュターで読み込めるようエンコーディング
+        //エンコーディング
         let encodeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         AF.request(encodeUrlString,method: .get,headers: headers).responseJSON{

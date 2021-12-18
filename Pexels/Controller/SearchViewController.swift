@@ -30,21 +30,21 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
     }
     
     
-    // 検索バー編集開始時にキャンセルボタン有効化
+    // 検索バーキャンセルボタン有効化
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar){
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
-    // キャンセルボタンでキャセルボタン非表示
+    //キャセルボタン非表示
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
     }
     
-    //検索ボタン押下時の呼び出しメソッド
+    //検索ボタン時
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        //キーボードを閉じる。
+        //キーボード閉じる。
         searchBar.endEditing(true)
         
         if(searchBar.text!.count == 0) {
@@ -54,17 +54,16 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
             self.present(alert, animated: true, completion: nil)
         } else {
           
-            //Api取得
+            //api取得
             apiList.searchEvents(keyword: searchBar.text!, success: {(api) in
                 
                 //成功時の処理
                 HUD.hide()
-                
                 print(api.photos)
                 
                 if !api.photos.isEmpty{
                     
-                    //ApiGetlistに入れる
+                    //apiGetlistに入れる
                     self.apiGetlist = api.photos
                     
                     //テーブルを再読み込みする。
@@ -99,15 +98,15 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //cell を xib TableViewCell
+        //cell定義
         let cell =  tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        //Cellのタグを使用し定義
+        //cellのタグを使用し定義
         let contentsImageView = cell.contentView.viewWithTag(1) as! UIImageView
         let Photographer = cell.contentView.viewWithTag(2) as! UILabel
         let ArtName = cell.contentView.viewWithTag(3) as! UILabel
         
-        //値を代入
+        //値代入
         contentsImageView.sd_setImage(with:  URL(string:(apiGetlist[indexPath.row].src?.tiny)!), placeholderImage: nil, options: .continueInBackground, completed: nil)
         Photographer.text = "撮影者: " + apiGetlist[indexPath.row].photographer!
         ArtName.text = "【作品名】\n" + apiGetlist[indexPath.row].alt!
@@ -115,12 +114,12 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         return cell
     }
     
-    //Cellの高さ
+    //cellの高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
     
-    //Cellをタップした時の動作
+    //cellをタップ時の動作
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //選択解除
