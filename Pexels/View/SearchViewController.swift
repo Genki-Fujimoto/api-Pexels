@@ -13,7 +13,7 @@ import SDWebImage
 import RxSwift
 import RxCocoa
 
-class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
+class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
     //定義
     @IBOutlet weak var searchber: UISearchBar!
@@ -32,6 +32,7 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         // デリゲート設定
         tableview.delegate = self
         tableview.dataSource = self
+        searchber.delegate = self
         
         //入力されたワードをviewModelにバインド
         self.searchber.rx.text.orEmpty
@@ -53,7 +54,18 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
             .disposed(by: disposeBag)
     }
     
-    //Cellの個数
+    // 検索バー編集開始時にキャンセルボタン有効化
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar){
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    // キャンセルボタンでキャセルボタン非表示
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    //Cellの個数searchber
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apiGetlist.count
     }
