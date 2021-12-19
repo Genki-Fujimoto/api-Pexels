@@ -10,26 +10,6 @@ import Alamofire
 import SwiftyJSON
 import RxSwift
 
-struct Api : Codable {
-    var photos:[ListItem]
-    
-    init(photos:[ListItem]) {
-        self.photos = photos
-    }
-}
-
-struct ListItem : Codable {
-    var alt:String?
-    var photographer:String?
-    var src:srctype?
-    
-    struct srctype:Codable {
-        var tiny:String?
-        var large:String?
-    }
-}
-
-
 class ApiListModel{
     
     func searchEvents(keyword: String)-> Observable<Api?>{
@@ -70,5 +50,25 @@ class ApiListModel{
             }
             return Disposables.create()
         }
+    }
+}
+
+
+struct Api : Codable {
+    var photos:[ListItem]
+    
+    init(photos:[ListItem]) {
+        self.photos = photos
+    }
+}
+
+struct ListItem : Codable {
+    var alt:String?
+    var photographer:String?
+    var src:srctype?
+    
+    struct srctype:Codable {
+        var tiny:String?
+        var large:String?
     }
 }

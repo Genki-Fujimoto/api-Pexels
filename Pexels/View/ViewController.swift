@@ -20,4 +20,3 @@ class ViewController: UIViewController {
         imageview.sd_setImage(with:  URL(string:photoLargeUrl), placeholderImage: nil, options: .continueInBackground, completed: nil)
     }
 }
-

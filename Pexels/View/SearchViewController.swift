@@ -13,12 +13,13 @@ import SDWebImage
 import RxSwift
 import RxCocoa
 
-
 class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
     
     //定義
     @IBOutlet weak var searchber: UISearchBar!
     @IBOutlet weak var tableview: UITableView!
+    
+    let viewModel: ViewModel = ViewModel()
     
     let apiModel = ApiListModel()
     var apiGetlist:[ListItem] = []
@@ -32,15 +33,17 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
         tableview.delegate = self
         tableview.dataSource = self
         
-        //RxSwift
+        //入力されたワードをviewModelにバインド
         self.searchber.rx.text.orEmpty
             .filter { $0.count > 0 }
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .flatMap { [unowned self] data in
-                // 結果(data)を引数に次の関数に繋げる
-                return self.apiModel.searchEvents(keyword: data)
-            }
+            .asDriver(onErrorDriveWith: Driver.empty())
+            .drive(viewModel.searchWord) //新たにSubscriptionを生成
+            .disposed(by: disposeBag)
+        
+        // イベントの検索結果のストリームを購読する
+        viewModel.events
             .subscribe(onNext: {[weak self] getapi in
                 if let events = getapi {
                     self!.apiGetlist = events.photos
@@ -54,7 +57,6 @@ class SearchViewController: UIViewController, UITableViewDelegate,UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apiGetlist.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

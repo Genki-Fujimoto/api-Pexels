@@ -19,6 +19,7 @@
 		3785CB74276AD9DB00F810EE /* PexelsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB73276AD9DB00F810EE /* PexelsUITestsLaunchTests.swift */; };
 		3785CB86276AED5200F810EE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB85276AED5200F810EE /* SearchViewController.swift */; };
 		3785CB8A276B7E3B00F810EE /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785CB89276B7E3B00F810EE /* ApiModel.swift */; };
+		378E6A1E276F20B9002FF27B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378E6A1D276F20B9002FF27B /* ViewModel.swift */; };
 		832978BE17EE4E673455CBA2 /* Pods_Pexels_PexelsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D042DCB2169D79F9526B07 /* Pods_Pexels_PexelsUITests.framework */; };
 		B5C69DF294DE0FA0AD9E6F17 /* Pods_PexelsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E4DAA0658262AFEA921F93 /* Pods_PexelsTests.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		3785CB73276AD9DB00F810EE /* PexelsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3785CB85276AED5200F810EE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3785CB89276B7E3B00F810EE /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
+		378E6A1D276F20B9002FF27B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4DCED41E4EB98582A4E8731E /* Pods_Pexels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pexels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62E4DAA0658262AFEA921F93 /* Pods_PexelsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PexelsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		828CAF9C27AFF07F49CB8E1E /* Pods-Pexels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pexels.debug.xcconfig"; path = "Target Support Files/Pods-Pexels/Pods-Pexels.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,7 +137,7 @@
 			children = (
 				3785CB80276ADD2700F810EE /* Model */,
 				3785CB81276ADD3300F810EE /* View */,
-				3785CB82276ADD5000F810EE /* Controller */,
+				3785CB82276ADD5000F810EE /* ViewModel */,
 				3785CB50276AD9D800F810EE /* AppDelegate.swift */,
 				3785CB52276AD9D800F810EE /* SceneDelegate.swift */,
 				3785CB59276AD9DA00F810EE /* Assets.xcassets */,
@@ -174,17 +176,18 @@
 			isa = PBXGroup;
 			children = (
 				3785CB56276AD9D800F810EE /* Main.storyboard */,
+				3785CB85276AED5200F810EE /* SearchViewController.swift */,
+				3785CB54276AD9D800F810EE /* ViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		3785CB82276ADD5000F810EE /* Controller */ = {
+		3785CB82276ADD5000F810EE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3785CB85276AED5200F810EE /* SearchViewController.swift */,
-				3785CB54276AD9D800F810EE /* ViewController.swift */,
+				378E6A1D276F20B9002FF27B /* ViewModel.swift */,
 			);
-			path = Controller;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		465A284B0D20CA5D0D992874 /* Frameworks */ = {
@@ -440,6 +443,7 @@
 				3785CB55276AD9D800F810EE /* ViewController.swift in Sources */,
 				3785CB51276AD9D800F810EE /* AppDelegate.swift in Sources */,
 				3785CB53276AD9D800F810EE /* SceneDelegate.swift in Sources */,
+				378E6A1E276F20B9002FF27B /* ViewModel.swift in Sources */,
 				3785CB8A276B7E3B00F810EE /* ApiModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

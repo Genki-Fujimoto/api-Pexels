@@ -19,7 +19,7 @@ class PexelsUITests: XCTestCase {
         let searchField = app.searchFields["画像検索"]
         let tablesQuery = app.tables
         let staticText = tablesQuery.children(matching: .cell)
-        let mvcButton = app.navigationBars["Pexels.View"].buttons["MVC-Rxswift"]
+        let mvcButton = app.navigationBars["Pexels.View"].buttons["MVVC-Rxswift"]
         
         searchField.tap()
         searchField.typeText("猫")
