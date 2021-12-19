@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import PKHUD
 import SDWebImage
 import RxSwift
 import RxCocoa
