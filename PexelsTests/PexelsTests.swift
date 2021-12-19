@@ -36,7 +36,6 @@ class PexelsTests: XCTestCase {
                             //0個チェック
                             XCTAssertNotEqual(result, 0)
                             expect.fulfill()
-                
             }
         })
             .disposed(by: disposeBag)
@@ -51,7 +50,6 @@ class PexelsTests: XCTestCase {
             }
         }
     }
-    
     
     /*
     func testPerformanceExample() throws {
